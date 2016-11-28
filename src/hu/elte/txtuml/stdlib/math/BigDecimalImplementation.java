@@ -1,4 +1,4 @@
-package hu.elte.txtuml.math;
+package hu.elte.txtuml.stdlib.math;
 
 import java.math.RoundingMode;
 
