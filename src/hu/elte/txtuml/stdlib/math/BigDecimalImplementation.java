@@ -12,15 +12,29 @@ import hu.elte.txtuml.api.model.Collection;
  */
 public class BigDecimalImplementation implements BigDecimal {
 
-	/*
+	/**
 	 * Protected constructor to make conversion faster
 	 */
 	protected BigDecimalImplementation(java.math.BigDecimal val) {
 		this.num = val;
 	}
 
-	/*
-	 * Extract java.math.BigDecimal from BigDecimal
+	/**
+	 * Extracts java.math.BigDecimal from BigDecimal. Usually used
+	 * in cases, when there is an instance method that takes another
+	 * BigDecimal as a parameter and we want to extract an original
+	 * Java object to send it as a parameter to an original object
+	 * method.
+	 * The reason why this method is static is because an Interface
+	 * object doesn't contain an original object, as it is contained
+	 * in an Implementation object.
+	 * This method is NOT private because some other External Classes
+	 * can and do use such methods (such as BigDecimal's constructors
+	 * use BigInteger's extract methods)
+	 * 
+	 * @see #add(BigDecimal)
+	 * @see #equals(BigDecimal)
+	 * @see BigDecimalImplementation#BigDecimalImplementation(BigInteger, MathContext)
 	 */
 	protected static java.math.BigDecimal getOrigBigDecimal(Object val) {
 		if (val instanceof BigDecimalImplementation) {
@@ -531,7 +545,7 @@ public class BigDecimalImplementation implements BigDecimal {
 	}
 
 	@Override
-	public boolean equals(Object x) {
+	public boolean equals(BigDecimal x) {
 		return num.equals(getOrigBigDecimal(x));
 	}
 

@@ -484,21 +484,20 @@ public interface BigDecimal extends ExternalClass {
 
 	/**
 	 * Compares this {@code BigDecimal} with the specified
-	 * {@code Object} for equality.  Unlike {@link
+	 * {@code BigDecimal} for equality.  Unlike {@link
 	 * #compareTo(BigDecimal) compareTo}, this method considers two
 	 * {@code BigDecimal} objects equal only if they are equal in
 	 * value and scale (thus 2.0 is not equal to 2.00 when compared by
 	 * this method).
 	 *
-	 * @param  x {@code Object} to which this {@code BigDecimal} is
+	 * @param  x {@code BigDecimal} to which this {@code BigDecimal} is
 	 *         to be compared.
-	 * @return {@code true} if and only if the specified {@code Object} is a
-	 *         {@code BigDecimal} whose value and scale are equal to this
-	 *         {@code BigDecimal}'s.
+	 * @return {@code true} if and only if the specified {@code BigDecimal}'s
+	 * 		   value and scale are equal to this {@code BigDecimal}'s.
 	 * @see    #compareTo(BigDecimal)
 	 * @see    #hashCode
 	 */
-	public boolean equals(Object x);
+	public boolean equals(BigDecimal x);
 
 	/**
 	 * Converts this {@code BigDecimal} to a {@code float}.

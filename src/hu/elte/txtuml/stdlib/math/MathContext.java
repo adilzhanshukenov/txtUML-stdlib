@@ -48,15 +48,14 @@ public interface MathContext extends ExternalClass {
 
 	/**
 	 * Compares this {@code MathContext} with the specified
-	 * {@code Object} for equality.
+	 * {@code MathContext} for equality.
 	 *
-	 * @param  x {@code Object} to which this {@code MathContext} is to
+	 * @param  x {@code MathContext} to which this {@code MathContext} is to
 	 *         be compared.
-	 * @return {@code true} if and only if the specified {@code Object} is
-	 *         a {@code MathContext} object which has exactly the same
-	 *         settings as this object
+	 * @return {@code true} if and only if the specified {@code MathContext} object
+	 * 		   has exactly the same settings as this object
 	 */
-	public boolean equals(Object x);
+	public boolean equals(MathContext x);
 
 	/**
 	 * Returns the {@code precision} setting.

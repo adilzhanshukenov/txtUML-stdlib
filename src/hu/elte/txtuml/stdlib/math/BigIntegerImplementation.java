@@ -13,22 +13,36 @@ import hu.elte.txtuml.api.model.Collection;
 
 public class BigIntegerImplementation implements BigInteger {
 
-	/*
+	/**
 	 * Protected constructor to make conversion faster
 	 */
 	protected BigIntegerImplementation(java.math.BigInteger val) {
 		this.num = val;
 	}
 
-	/*
-	 * Extract java.math.BigInteger from BigInteger
+	/**
+	 * Extracts java.math.BigInteger from BigInteger. Usually used
+	 * in cases, when there is an instance method that takes another
+	 * BigInteger as a parameter and we want to extract an original
+	 * Java object to send it as a parameter to an original object
+	 * method.
+	 * The reason why this method is static is because an Interface
+	 * object doesn't contain an original object, as it is contained
+	 * in an Implementation object.
+	 * This method is NOT private because some other External Classes
+	 * can and do use such methods (such as BigDecimal's constructors
+	 * use BigInteger's extract methods)
+	 *  
+	 * @see #add(BigInteger)
+	 * @see #equals(BigInteger)
+	 * @see BigDecimalImplementation#BigDecimalImplementation(BigInteger, MathContext)
 	 */
 	protected static java.math.BigInteger getOrigBigInteger(Object val) {
-		if (val instanceof BigIntegerImplementation) {
-			return ((BigIntegerImplementation) val).num;
-		}
-		else if (val instanceof BigInteger) {
+		if (val instanceof BigInteger) {
 			return ((BigIntegerImplementation)(BigInteger) val).num;
+		}
+		else if (val instanceof BigIntegerImplementation) {
+			return ((BigIntegerImplementation) val).num;
 		}
 		// Otherwise it's an error
 		else return null;
@@ -148,7 +162,7 @@ public class BigIntegerImplementation implements BigInteger {
 		this.num = new java.math.BigInteger(val, radix);
 	}
 
-	private java.math.BigInteger num;
+	protected java.math.BigInteger num;
 
 	@Override
 	public BigInteger abs() {
@@ -219,7 +233,7 @@ public class BigIntegerImplementation implements BigInteger {
 	}
 
 	@Override
-	public boolean equals(Object x) {
+	public boolean equals(BigInteger x) {
 		return num.equals(getOrigBigInteger(x));
 	}
 

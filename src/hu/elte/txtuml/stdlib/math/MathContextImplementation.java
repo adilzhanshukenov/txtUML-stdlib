@@ -10,15 +10,28 @@ import java.math.RoundingMode;
  */
 public class MathContextImplementation implements MathContext {
 
-	/*
+	/**
 	 * Protected constructor to make conversion faster
 	 */
 	protected MathContextImplementation(java.math.MathContext mc) {
 		this.mc = mc;
 	}
 
-	/*
-	 * Extract java.math.MathContext from MathContext
+	/**
+	 * Extracts java.math.MathContext from MathContext. Usually used
+	 * in cases, when there is an instance method that takes another
+	 * MathContext as a parameter and we want to extract an original
+	 * Java object to send it as a parameter to an original object
+	 * method.
+	 * The reason why this method is static is because an Interface
+	 * object doesn't contain an original object, as it is contained
+	 * in an Implementation object.
+	 * This method is NOT private because some other External Classes
+	 * can and do use such methods (such as BigDecimal's constructors
+	 * use BigInteger's extract methods)
+	 * 
+	 * @see #equals(MathContext)
+	 * @see BigDecimalImplementation#BigDecimalImplementation(BigInteger, MathContext)
 	 */
 	protected static java.math.MathContext getOrigMathContext(Object val) {
 		if (val instanceof MathContextImplementation) {
@@ -80,7 +93,7 @@ public class MathContextImplementation implements MathContext {
 	private java.math.MathContext mc;
 
 	@Override
-	public boolean equals(Object x) {
+	public boolean equals(MathContext x) {
 		return mc.equals(getOrigMathContext(x));
 	}
 

@@ -219,13 +219,13 @@ public interface BigInteger extends ExternalClass {
 	public double doubleValue();
 
 	/**
-	 * Compares this BigInteger with the specified Object for equality.
+	 * Compares this BigInteger with the specified BigInteger for equality.
 	 *
-	 * @param  x Object to which this BigInteger is to be compared.
-	 * @return {@code true} if and only if the specified Object is a
-	 *         BigInteger whose value is numerically equal to this BigInteger.
+	 * @param  x BigInteger object to which this BigInteger is to be compared.
+	 * @return {@code true} if and only if the specified BigInteger
+	 * is numerically equal to this BigInteger.
 	 */
-	public boolean equals(Object x);
+	public boolean equals(BigInteger x);
 
 	/**
 	 * Returns a BigInteger whose value is equivalent to this BigInteger
