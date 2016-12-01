@@ -37,11 +37,11 @@ public class BigDecimalImplementation implements BigDecimal {
 	 * @see BigDecimalImplementation#BigDecimalImplementation(BigInteger, MathContext)
 	 */
 	protected static java.math.BigDecimal getOrigBigDecimal(Object val) {
-		if (val instanceof BigDecimalImplementation) {
-			return ((BigDecimalImplementation) val).num;
-		}
-		else if (val instanceof BigDecimal) {
+		if (val instanceof BigDecimal) {
 			return ((BigDecimalImplementation)(BigDecimal) val).num;
+		}
+		else if (val instanceof BigDecimalImplementation) {
+			return ((BigDecimalImplementation) val).num;
 		}
 		// Otherwise it's an error
 		else return null;

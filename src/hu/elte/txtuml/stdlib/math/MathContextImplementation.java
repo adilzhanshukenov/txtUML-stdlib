@@ -34,11 +34,11 @@ public class MathContextImplementation implements MathContext {
 	 * @see BigDecimalImplementation#BigDecimalImplementation(BigInteger, MathContext)
 	 */
 	protected static java.math.MathContext getOrigMathContext(Object val) {
-		if (val instanceof MathContextImplementation) {
-			return ((MathContextImplementation) val).mc;
-		}
-		else if (val instanceof MathContext) {
+		if (val instanceof MathContext) {
 			return ((MathContextImplementation)(MathContext) val).mc;
+		}
+		else if (val instanceof MathContextImplementation) {
+			return ((MathContextImplementation) val).mc;
 		}
 		// Otherwise it's an error
 		else return null;
