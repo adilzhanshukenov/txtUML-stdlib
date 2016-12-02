@@ -3,6 +3,7 @@ package hu.elte.txtuml.stdlib.util;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
+
     /**
      * This is an implementation class of all java dictionary methods for purpose of using it in txtUML models.
      * <p>
@@ -15,7 +16,6 @@ import java.util.Hashtable;
 public class DictionaryImplementation implements hu.elte.txtuml.stdlib.util.Dictionary  {
 	
 	Dictionary<Integer, String> dictionary = new Hashtable<Integer, String>();
-	
 	
 	
     /**
