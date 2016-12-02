@@ -9,25 +9,13 @@ import java.util.Enumeration;
 	/**
 	 * This class provides the functionality of the dictionary Java class for txtUML models.
 	 * <p>   
-     * The <code>Dictionary</code> class is the abstract parent of any
-     * class, such as <code>Hashtable</code>, which maps keys to values.
-     * Every key and every value is an object. In any one <tt>Dictionary</tt>
-     * object, every key is associated with at most one value. Given a
-     * <tt>Dictionary</tt> and a key, the associated element can be looked up.
-     * Any non-<code>null</code> object can be used as a key and as a value.
-     * <p>
-     * As a rule, the <code>equals</code> method should be used by
-     * implementations of this class to decide if two keys are the same.
-     * <p>
-     * <strong>NOTE: This class is obsolete.  New implementations should
-     * implement the Map interface, rather than extending this class.</strong>
-     *
-     * @author  Kovan Rashid
+	 * 
+     * @author  Kovan Rashid  
      * @see     java.lang.Object#hashCode()
      * @see     java.util.Hashtable
      */
 	
-		public interface DictionaryInterface extends ExternalClass{
+		public interface Dictionary extends ExternalClass{
 			
 			/**
 			 * Tests if this dictionary maps no keys to value. The general contract
@@ -44,9 +32,6 @@ import java.util.Enumeration;
 			 * @return  the number of keys in this dictionary.
 			 */
 			public int size();
-			
-			
-			
 			
 			/**
 			 * Returns an enumeration of the keys in this dictionary. The general
@@ -68,7 +53,6 @@ import java.util.Enumeration;
 			 * @return  an enumeration of the values in this dictionary.
 			 * @see java.util.Enumeration
 			 */
-			
 			public Enumeration<String> elements();
 			
 			/**
@@ -83,7 +67,6 @@ import java.util.Enumeration;
 			 *          this dictionary.
 			 * @exception NullPointerException if the <tt>key</tt> is <tt>null</tt>.
 			 */
-			
 			public String get(int key);
 			
 			/**
@@ -111,10 +94,7 @@ import java.util.Enumeration;
 			 * @exception  NullPointerException  if the <code>key</code> or
 			 *               <code>value</code> is <code>null</code>.
 			 */
-			
 			public String put(int key,String value);
-			
-			
 			
 			/**
 			 * Removes the <code>key</code> (and its corresponding
@@ -128,9 +108,7 @@ import java.util.Enumeration;
 			 * @exception NullPointerException if <tt>key</tt> is <tt>null</tt>.
 			 */
 			public String remove(int key);
-			
-			
-			
+				
 		}
 
 

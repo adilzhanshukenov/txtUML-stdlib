@@ -3,29 +3,16 @@ package hu.elte.txtuml.stdlib.util;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
-
     /**
      * This is an implementation class of all java dictionary methods for purpose of using it in txtUML models.
-     * <p>   
-     * The <code>Dictionary</code> class is the abstract parent of any
-     * class, such as <code>Hashtable</code>, which maps keys to values.
-     * Every key and every value is an object. In any one <tt>Dictionary</tt>
-     * object, every key is associated with at most one value. Given a
-     * <tt>Dictionary</tt> and a key, the associated element can be looked up.
-     * Any non-<code>null</code> object can be used as a key and as a value.
      * <p>
-     * As a rule, the <code>equals</code> method should be used by
-     * implementations of this class to decide if two keys are the same.
-     * <p>
-     * <strong>NOTE: This class is obsolete.  New implementations should
-     * implement the Map interface, rather than extending this class.</strong>
-     *
+     * 
      * @author  Kovan Rashid
      * @see     java.lang.Object#hashCode()
      * @see     java.util.Hashtable
      */
 	
-public class DictionaryImplementation implements DictionaryInterface  {
+public class DictionaryImplementation implements hu.elte.txtuml.stdlib.util.Dictionary  {
 	
 	Dictionary<Integer, String> dictionary = new Hashtable<Integer, String>();
 	
@@ -39,11 +26,10 @@ public class DictionaryImplementation implements DictionaryInterface  {
 	 * @return  <code>true</code> if this dictionary maps no keys to values;
 	 *          <code>false</code> otherwise.
 	 */
-	
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		  return dictionary.isEmpty();
+		
+			return dictionary.isEmpty();
 	}
 	
 	/**
@@ -52,11 +38,10 @@ public class DictionaryImplementation implements DictionaryInterface  {
 	 */
 	@Override
 	public  int size() {
-		// TODO Auto-generated method stub
+		
 		return dictionary.size();
 		
 	}
-	
 	
 	/**
 	 * Returns an enumeration of the keys in this dictionary. The general
@@ -67,15 +52,12 @@ public class DictionaryImplementation implements DictionaryInterface  {
 	 * @return  an enumeration of the keys in this dictionary.
 	 * @see     java.util.Enumeration
 	 */	
-	
 	@Override
 	public Enumeration<Integer> keys() {
-		// TODO Auto-generated method stub
 		
-		return dictionary.keys();
+			return dictionary.keys();
 	}
 
-	
 	/**
 	 * Returns an enumeration of the values in this dictionary. The general
 	 * contract for the <tt>elements</tt> method is that an
@@ -87,13 +69,11 @@ public class DictionaryImplementation implements DictionaryInterface  {
 	 */
 	@Override
 	public Enumeration<String> elements() {
-		// TODO Auto-generated method stub
 		
-		return dictionary.elements();
+			return dictionary.elements();
 		
 	}
 	
-
 	/**
 	 * Removes the <code>key</code> (and its corresponding
 	 * <code>value</code>) from this dictionary. This method does nothing
@@ -105,16 +85,13 @@ public class DictionaryImplementation implements DictionaryInterface  {
 	 *          mapping.
 	 * @exception NullPointerException if <tt>key</tt> is <tt>null</tt>.
 	 */
-	
 	@Override
 	public String remove(int key) {
-		// TODO Auto-generated method stub
 		
-		return dictionary.remove(key);
+			return dictionary.remove(key);
 		
 	}
 		
-	
 	/**
 	 * Returns the value to which the key is mapped in this dictionary.
 	 * The general contract for the <tt>isEmpty</tt> method is that if this
@@ -127,14 +104,12 @@ public class DictionaryImplementation implements DictionaryInterface  {
 	 *          this dictionary.
 	 * @exception NullPointerException if the <tt>key</tt> is <tt>null</tt>.
 	 */
-	
 	@Override
 	public String get(int key) {
-		// TODO Auto-generated method stub
-		return dictionary.get(key);
+		
+			return dictionary.get(key);
 	}
 
-		
 	/**
 	 * Maps the specified <code>key</code> to the specified
 	 * <code>value</code> in this dictionary. Neither the key nor the
@@ -160,15 +135,12 @@ public class DictionaryImplementation implements DictionaryInterface  {
 	 * @exception  NullPointerException  if the <code>key</code> or
 	 *               <code>value</code> is <code>null</code>.
 	 */
-
 	@Override
 	public String put(int key,String value) {
-		// TODO Auto-generated method stub
 		
-		return dictionary.put(key, value);
+			return dictionary.put(key, value);
 		
 	}
-	
 	
 	/**
 	 * Returns a string representation of the object. In general, the
@@ -191,7 +163,6 @@ public class DictionaryImplementation implements DictionaryInterface  {
 	 *
 	 * @return  a string representation of the object.
 	 */
-	
 	@Override
 	public String toString(){
 		
