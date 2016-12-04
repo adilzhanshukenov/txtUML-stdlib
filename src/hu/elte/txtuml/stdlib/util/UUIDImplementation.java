@@ -16,8 +16,13 @@ public class UUIDImplementation implements UUID {
 	private java.util.UUID var;
 
 	/**
-	 * Instance method that returns val,
+	 * Instance method that returns val. This methid is used to extract
+	 * java.util.UUID from UUID, it is used when there is an instance method
+	 * that takes another UUID as a parameter and we want to extract an original
+	 * Java object to send it as a parameter to an original object method.
 	 * 
+	 * @see equals
+	 * @see compareTo
 	 * @param val
 	 * @return
 	 */
@@ -65,7 +70,7 @@ public class UUIDImplementation implements UUID {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(UUID obj) {
 		return var.equals(getOrigUUID(obj));
 	}
 

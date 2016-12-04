@@ -55,7 +55,7 @@ public interface UUID extends ExternalClass {
 	 * @return true if the objects are the same; false otherwise
 	 * 
 	 */
-	public boolean equals(Object obj);
+	public boolean equals(UUID obj);
 
 	/**
 	 * Creates a UUID from the string standard representation as described in
@@ -94,21 +94,6 @@ public interface UUID extends ExternalClass {
 	 * @return A hash code value for this UUID
 	 */
 	public int hashCode();
-
-	/**
-	 * Static factory to retrieve a type 3 (name based) UUID based on the
-	 * specified byte array..
-	 *
-	 * @param name
-	 *            - A byte array to be used to construct a UUID
-	 * 
-	 * @return A UUID generated from the specified array
-	 */
-	/*
-	 * public static UUID nameUUIDFromBytes(Collection<Byte> name) {
-	 * 
-	 * return new UUIDImplementation(java.util.UUID.nameUUIDFromBytes(name)); }
-	 */
 
 	/**
 	 * The node value associated with this UUID. The 48 bit node value is
