@@ -1,36 +1,35 @@
 package hu.elte.txtuml.stdlib.lang;
 
-public class SystemImpl implements System{
+/**
+ * Implementation class for System interface for txtUML models.
+ * @see System
+ *
+ */
+public class SystemImpl implements System {
 
 	@Override
 	public String clearProperty(String key) {
-		return  java.lang.System.clearProperty(key);
+		return java.lang.System.clearProperty(key);
 	}
 
 	@Override
 	public String currentTimeMillis() {
-		long  current = java.lang.System.currentTimeMillis();
-		java.lang.System.out.println("original long = " + current);
-		String d = String.valueOf(current);
-		return  d;
+		return String.valueOf(java.lang.System.currentTimeMillis());
 	}
 
 	@Override
 	public void exitVM(int status) {
 		java.lang.System.exit(status);
-		
 	}
 
 	@Override
 	public void gc() {
 		java.lang.System.gc();
-		
 	}
-
 
 	@Override
 	public String getenv(String name) {
-		return java.lang.System.getenv(name) ;
+		return java.lang.System.getenv(name);
 	}
 
 	@Override
@@ -43,7 +42,6 @@ public class SystemImpl implements System{
 		return java.lang.System.getProperty(key, def);
 	}
 
-
 	@Override
 	public String lineSeparator() {
 		return java.lang.System.lineSeparator();
@@ -52,13 +50,11 @@ public class SystemImpl implements System{
 	@Override
 	public void load(String filename) {
 		java.lang.System.load(filename);
-		
 	}
 
 	@Override
 	public void loadLibrary(String libname) {
 		java.lang.System.loadLibrary(libname);
-		
 	}
 
 	@Override
@@ -68,18 +64,13 @@ public class SystemImpl implements System{
 
 	@Override
 	public String nanoTime() {
-		long  nano = java.lang.System.nanoTime();
-		java.lang.System.out.println("original long = " + nano);
-		String str = String.valueOf(nano);
-		return  str;
+		return String.valueOf(java.lang.System.nanoTime());
 	}
 
 	@Override
 	public void runFinalization() {
 		java.lang.System.runFinalization();
-		
 	}
-
 
 	@Override
 	public String setProperty(String key, String value) {
