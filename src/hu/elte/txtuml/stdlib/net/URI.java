@@ -439,6 +439,21 @@ public interface URI extends ExternalClass {
 	URI	resolve(URI uri);
 	
     /**
+     * Returns the content of this URI as a US-ASCII string.
+     *
+     * <p> If this URI does not contain any characters in the <i>other</i>
+     * category then an invocation of this method will return the same value as
+     * an invocation of the {@link #toString() toString} method.  Otherwise
+     * this method works as if by invoking that method and then <a
+     * href="#encode">encoding</a> the result.  </p>
+     *
+     * @return  The string form of this URI, encoded as needed
+     *          so that it only contains characters in the US-ASCII
+     *          charset
+     */
+	String toASCIIString();
+	
+    /**
      * Constructs a URL from this URI.
      *
      * <p> This convenience method works as if invoking it were equivalent to
@@ -462,5 +477,38 @@ public interface URI extends ExternalClass {
      * @return  a java.net.URL instance.
      */
 	java.net.URI toURI();
+	
+    /**
+     * Tests this URI for equality with URI object.
+     *
+     * <p> For two URIs to be considered equal requires that either both are
+     * opaque or both are hierarchical.  Their schemes must either both be
+     * undefined or else be equal without regard to case. Their fragments
+     * must either both be undefined or else be equal.
+     *
+     * <p> For two opaque URIs to be considered equal, their scheme-specific
+     * parts must be equal.
+     *
+     * <p> For two hierarchical URIs to be considered equal, their paths must
+     * be equal and their queries must either both be undefined or else be
+     * equal.  Their authorities must either both be undefined, or both be
+     * registry-based, or both be server-based.  If their authorities are
+     * defined and are registry-based, then they must be equal.  If their
+     * authorities are defined and are server-based, then their hosts must be
+     * equal without regard to case, their port numbers must be equal, and
+     * their user-information components must be equal.
+     *
+     * <p> When testing the user-information, path, query, fragment, authority,
+     * or scheme-specific parts of two URIs for equality, the raw forms rather
+     * than the encoded forms of these components are compared and the
+     * hexadecimal digits of escaped octets are compared without regard to
+     * case.
+     *
+     * @param   uri   The URI object to which this object is to be compared
+     *
+     * @return  {@code true} if, and only if, the given object is a URI that
+     *          is identical to this URI
+     */
+	boolean equals(URI uri);
 
 }

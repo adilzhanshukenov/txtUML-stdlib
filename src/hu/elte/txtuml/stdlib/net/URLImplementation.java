@@ -19,7 +19,7 @@ import java.net.URISyntaxException;
  * @author Valeh Hajiyev
  * @see java.net.URL
  */
-public class URLImpl implements URL, Serializable {
+public class URLImplementation implements URL, Serializable {
 
 	private static final long serialVersionUID = -3877493174942135520L;
 	
@@ -31,7 +31,7 @@ public class URLImpl implements URL, Serializable {
      *
      * @param      a {@code java.net.URL} instance.
      */
-	public URLImpl(java.net.URL url) {
+	public URLImplementation(java.net.URL url) {
 		this.instance = url;
 	}
 	
@@ -47,7 +47,7 @@ public class URLImpl implements URL, Serializable {
      *               unknown protocol is found, or {@code spec} is {@code null}.
      * @see        java.net.URL#URL(java.net.URL, java.lang.String)
      */
-	public URLImpl(String spec) throws MalformedURLException {
+	public URLImplementation(String spec) throws MalformedURLException {
 		this.instance = new java.net.URL(spec);
 	}
 	
@@ -129,7 +129,7 @@ public class URLImpl implements URL, Serializable {
      * @see        java.net.URLStreamHandlerFactory#createURLStreamHandler(
      *                  java.lang.String)
      */
-	public URLImpl(String protocol, String host, int port, String file) throws MalformedURLException {
+	public URLImplementation(String protocol, String host, int port, String file) throws MalformedURLException {
 		this.instance = new java.net.URL(protocol, host, port, file);
 	}
 	
@@ -151,7 +151,7 @@ public class URLImpl implements URL, Serializable {
      * @see        java.net.URL#URL(java.lang.String, java.lang.String,
      *                  int, java.lang.String)
      */
-	public URLImpl(String protocol, String host, String file) throws MalformedURLException {
+	public URLImplementation(String protocol, String host, String file) throws MalformedURLException {
 		this.instance = new java.net.URL(protocol, host, file);
 	}
 	
@@ -202,7 +202,7 @@ public class URLImpl implements URL, Serializable {
      * @see        java.net.URLStreamHandler#parseURL(java.net.URL,
      *                  java.lang.String, int, int)
      */
-	public URLImpl(hu.elte.txtuml.stdlib.net.URL context, String spec) throws MalformedURLException {
+	public URLImplementation(hu.elte.txtuml.stdlib.net.URL context, String spec) throws MalformedURLException {
 		this.instance = new java.net.URL(context.toURL(), spec);
 	}
 	
@@ -227,12 +227,12 @@ public class URLImpl implements URL, Serializable {
      * Note: The defined behavior for {@code equals} is known to
      * be inconsistent with virtual hosting in HTTP.
      *
-     * @param   obj   the URL to compare against.
+     * @param   url   the URL to compare against.
      * @return  {@code true} if the objects are the same;
      *          {@code false} otherwise.
      */
-    public boolean equals(Object obj) {
-    	return instance.equals(obj);
+    public boolean equals(URL url) {
+    	return instance.equals(url);
     }
     
     /**
@@ -328,7 +328,7 @@ public class URLImpl implements URL, Serializable {
 
 	@Override
 	public hu.elte.txtuml.stdlib.net.URI toURI() throws URISyntaxException {
-		return new URIImpl(instance.toURI());
+		return new URIImplementation(instance.toURI());
 	}
 
 	@Override

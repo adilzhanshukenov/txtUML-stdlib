@@ -12,7 +12,7 @@ import java.net.URISyntaxException;
  * @author Valeh Hajiyev
  * @see java.net.URI
  */
-public class URIImpl implements URI, Comparable<URI>, Serializable {
+public class URIImplementation implements URI, Comparable<URI>, Serializable {
 
 	private static final long serialVersionUID = -6323872838756598863L;
 	
@@ -24,7 +24,7 @@ public class URIImpl implements URI, Comparable<URI>, Serializable {
      *
      * @param      a {@code java.net.URI} instance.
      */
-	public URIImpl(java.net.URI uri) {
+	public URIImplementation(java.net.URI uri) {
 		this.instance = uri;
 	}
 	
@@ -97,7 +97,7 @@ public class URIImpl implements URI, Comparable<URI>, Serializable {
      *          If the given string violates RFC&nbsp;2396, as augmented
      *          by the above deviations
      */
-	public URIImpl(String str) throws URISyntaxException {
+	public URIImplementation(String str) throws URISyntaxException {
 		this.instance = new java.net.URI(str);
 	}
 	
@@ -139,7 +139,7 @@ public class URIImpl implements URI, Comparable<URI>, Serializable {
      *          If the URI string constructed from the given components
      *          violates RFC&nbsp;2396
      */
-	public URIImpl(String scheme, String ssp, String fragment) throws URISyntaxException {
+	public URIImplementation(String scheme, String ssp, String fragment) throws URISyntaxException {
 		this.instance = new java.net.URI(scheme, ssp, fragment);
 	}
 	
@@ -216,7 +216,7 @@ public class URIImpl implements URI, Comparable<URI>, Serializable {
      *         RFC&nbsp;2396, or if the authority component of the string is
      *         present but cannot be parsed as a server-based authority
      */
-	public URIImpl(String scheme, String userInfo, String host, int port, String path, String query, String fragment) throws URISyntaxException {
+	public URIImplementation(String scheme, String userInfo, String host, int port, String path, String query, String fragment) throws URISyntaxException {
 		this.instance = new java.net.URI(scheme, userInfo, host, port, path, query, fragment);
 	}
 	
@@ -242,7 +242,7 @@ public class URIImpl implements URI, Comparable<URI>, Serializable {
      *          If the URI string constructed from the given components
      *          violates RFC&nbsp;2396
      */
-	public URIImpl(String scheme, String host, String path, String fragment) throws URISyntaxException {
+	public URIImplementation(String scheme, String host, String path, String fragment) throws URISyntaxException {
 		this.instance = new java.net.URI(scheme, host, path, fragment);
 	}
 	
@@ -307,7 +307,7 @@ public class URIImpl implements URI, Comparable<URI>, Serializable {
      *         RFC&nbsp;2396, or if the authority component of the string is
      *         present but cannot be parsed as a server-based authority
      */
-	public URIImpl(String scheme, String authority, String path, String query, String fragment) throws URISyntaxException {
+	public URIImplementation(String scheme, String authority, String path, String query, String fragment) throws URISyntaxException {
 		this.instance = new java.net.URI(scheme, authority, path, query, fragment);
 	}
 	
@@ -338,51 +338,14 @@ public class URIImpl implements URI, Comparable<URI>, Serializable {
      */
     public static URI create(String str) {
         try {
-            return new URIImpl(str);
+            return new URIImplementation(str);
         } catch (URISyntaxException x) {
             throw new IllegalArgumentException(x.getMessage(), x);
         }
     }
     
-    /**
-     * Tests this URI for equality with another object.
-     *
-     * <p> If the given object is not a URI then this method immediately
-     * returns {@code false}.
-     *
-     * <p> For two URIs to be considered equal requires that either both are
-     * opaque or both are hierarchical.  Their schemes must either both be
-     * undefined or else be equal without regard to case. Their fragments
-     * must either both be undefined or else be equal.
-     *
-     * <p> For two opaque URIs to be considered equal, their scheme-specific
-     * parts must be equal.
-     *
-     * <p> For two hierarchical URIs to be considered equal, their paths must
-     * be equal and their queries must either both be undefined or else be
-     * equal.  Their authorities must either both be undefined, or both be
-     * registry-based, or both be server-based.  If their authorities are
-     * defined and are registry-based, then they must be equal.  If their
-     * authorities are defined and are server-based, then their hosts must be
-     * equal without regard to case, their port numbers must be equal, and
-     * their user-information components must be equal.
-     *
-     * <p> When testing the user-information, path, query, fragment, authority,
-     * or scheme-specific parts of two URIs for equality, the raw forms rather
-     * than the encoded forms of these components are compared and the
-     * hexadecimal digits of escaped octets are compared without regard to
-     * case.
-     *
-     * <p> This method satisfies the general contract of the {@link
-     * java.lang.Object#equals(Object) Object.equals} method. </p>
-     *
-     * @param   ob   The object to which this object is to be compared
-     *
-     * @return  {@code true} if, and only if, the given object is a URI that
-     *          is identical to this URI
-     */
-    public boolean equals(Object ob) {
-    	return instance.equals(ob);
+    public boolean equals(URI uri) {
+    	return instance.equals(uri);
     }
     
     /**
@@ -486,19 +449,6 @@ public class URIImpl implements URI, Comparable<URI>, Serializable {
         return instance.toString();
     }
     
-    /**
-     * Returns the content of this URI as a US-ASCII string.
-     *
-     * <p> If this URI does not contain any characters in the <i>other</i>
-     * category then an invocation of this method will return the same value as
-     * an invocation of the {@link #toString() toString} method.  Otherwise
-     * this method works as if by invoking that method and then <a
-     * href="#encode">encoding</a> the result.  </p>
-     *
-     * @return  The string form of this URI, encoded as needed
-     *          so that it only contains characters in the US-ASCII
-     *          charset
-     */
     public String toASCIIString() {
     	return instance.toASCIIString();
     }
@@ -590,32 +540,32 @@ public class URIImpl implements URI, Comparable<URI>, Serializable {
 
 	@Override
 	public URI normalize() {
-		return new URIImpl(instance.normalize());
+		return new URIImplementation(instance.normalize());
 	}
 
 	@Override
 	public URI parseServerAuthority() throws URISyntaxException {
-		return new URIImpl(instance.parseServerAuthority());
+		return new URIImplementation(instance.parseServerAuthority());
 	}
 
 	@Override
 	public URI relativize(URI uri) {
-		return new URIImpl(instance.relativize(uri.toURI()));
+		return new URIImplementation(instance.relativize(uri.toURI()));
 	}
 
 	@Override
 	public URI resolve(String str) {
-		return new URIImpl(instance.resolve(str));
+		return new URIImplementation(instance.resolve(str));
 	}
 
 	@Override
 	public URI resolve(URI uri) {
-		return new URIImpl(instance.resolve(uri.toURI()));
+		return new URIImplementation(instance.resolve(uri.toURI()));
 	}
 
 	@Override
 	public URL toURL() throws MalformedURLException {
-		return new URLImpl(instance.toURL());
+		return new URLImplementation(instance.toURL());
 	}
 
 	@Override

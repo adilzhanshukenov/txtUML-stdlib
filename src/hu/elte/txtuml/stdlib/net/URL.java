@@ -165,4 +165,28 @@ public interface URL extends ExternalClass {
      */
 	java.net.URL toURL();
 	
+    /**
+     * Compares this URL for equality with another URL object.<p>
+     *
+     * Two URL objects are equal if they have the same protocol, reference
+     * equivalent hosts, have the same port number on the host, and the same
+     * file and fragment of the file.<p>
+     *
+     * Two hosts are considered equivalent if both host names can be resolved
+     * into the same IP addresses; else if either host name can't be
+     * resolved, the host names must be equal without regard to case; or both
+     * host names equal to null.<p>
+     *
+     * Since hosts comparison requires name resolution, this operation is a
+     * blocking operation. <p>
+     *
+     * Note: The defined behavior for {@code equals} is known to
+     * be inconsistent with virtual hosting in HTTP.
+     *
+     * @param   url   the URL to compare against.
+     * @return  {@code true} if the objects are the same;
+     *          {@code false} otherwise.
+     */
+    public boolean equals(URL url);
+	
 }
